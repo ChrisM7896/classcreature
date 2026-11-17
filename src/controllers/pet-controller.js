@@ -20,7 +20,13 @@ export function createPetController(container) {
     },
     shop(req, res) {
       res.render('pages/shop', {
-        title: 'shop',
+        title: 'Shop',
+        features: container.config.features,
+      });
+    },
+    stats(req, res) {
+      res.render('pages/stats', {
+        title: 'Stats',
         features: container.config.features,
       });
     },

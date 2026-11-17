@@ -4,7 +4,7 @@
 export async function up(knex) {
   await knex.schema.createTable('users', (table) => {
     table.string('id', 36).primary();
-    table.string('fid', 36).nullable().unique(); 
+    table.string('fid', 36).nullable().unique();
     table.string('display_name', 120).notNullable();
     table.string('primary_email', 255).nullable().unique();
     table.timestamp('email_verified_at').nullable();
@@ -105,35 +105,51 @@ export async function up(knex) {
   await knex.schema.createTable('creatures', (table) => {
     table.string('id', 36).primary();
     table.string('user_id', 36)
-        .notNullable()
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE');
+      .notNullable()
+      .references('id')
+      .inTable('users')
+      .onDelete('CASCADE');
 
     table.string('name', 64).notNullable();
     table.string('creaturetype', 36).nullable();
 
     table.index(['user_id']);
-});
+  });
 
   await knex.schema.createTable('inventory', (table) => {
     table.string('id', 36).primary();
     table.string('user_id', 36)
-        .notNullable()
-        .references('id')
-        .inTable('users')
-        .onDelete('CASCADE');
+      .notNullable()
+      .references('id')
+      .inTable('users')
+      .onDelete('CASCADE');
 
     table.string('name', 64).notNullable();
     table.string('itemtype', 36).nullable();
 
     table.index(['user_id']);
-});
+  });
 
   await knex.schema.createTable('shop', (table) => {
-    table.string('id', 36).primary().autoIncrement();
+    table.increments('id', 36).primary();
     table.string('name', 64).notNullable().unique();
     table.integer('price').notNullable().defaultTo(0);
+  });
+
+  await knex.schema.createTable('journals', (table) => {
+    table.string('id', 36).primary();
+    table.string('user_id', 36)
+      .notNullable()
+      .references('id')
+      .inTable('users')
+      .onDelete('CASCADE');
+    table.string('pagecontent_1', 255).notNullable();
+    table.string('pagecontent_2', 255).nullable();
+    table.string('pagecontent_3', 255).nullable();
+    table.string('pagecontent_4', 255).nullable();
+    table.string('pagecontent_5', 255).nullable(); // may need to work out a better system for storing page data. this seems hard to upkeep and manage
+
+    table.index(['user_id']);
   });
 }
 

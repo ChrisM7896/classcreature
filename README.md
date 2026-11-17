@@ -1,1 +1,5 @@
-fork you
+# Project Documentation 
+> **Mission Statement:** *classcreature* was started with the goal of creating a game that can capture the attention span of high-school students during specifically timed intervals and utilize digipog transactions, to give them something to do during class that isn't too disruptive, but can help them focus when they've been working for too long without a break, while fueling the pogconomy. Naturally, the best option was a game and we chose to work off and expand the original *formcritter* idea, a pet-based game that included stats and items. 
+---
+### Project Setup
+This section will be filled out in the future. For now, go to `/wiki/system/onbaoarding.md` and read through the documentation to set up your `.env`. Use `npm run db:init` to initialize the database and `npm run dev` to start the server. That should be all you need to run a local *classcreature* server. 

@@ -23,4 +23,8 @@
     console.log("pet has been trained with using " + playItem + ", gaining " + increasedTrainedStat)
   })
 
+  socket.on('openJournal', function () {
+    console.log("journal opened");
+  });
+
 })();
